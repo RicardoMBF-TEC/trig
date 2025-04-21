@@ -1,13 +1,15 @@
 const express = require("express");
-const app = express(); // Initialize Express app
-const PORT = 3000; // Define server port
+const { angleAHandler } = require("./Handlers/angleAHandler");
+const { angleBHandler } = require("./Handlers/angleBHandler");
+const { angleCHandler } = require("./Handlers/angleCHandler");
 
-// Root route
-app.get("/", (req, res) => {
-    res.send("Server is running!");
-});
+const app = express();
+const PORT = 3000;
 
-// Start the server
+app.get("/angleA", angleAHandler); // Endpoint for Angle A
+app.get("/angleB", angleBHandler); // Endpoint for Angle B
+app.get("/angleC", angleCHandler); // Endpoint for Angle C
+
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
